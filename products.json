@@ -1,0 +1,23 @@
+[
+    {
+        "id": "price_1LO7sCAUByxtFMTGKos0o3rX",
+        "title": "Apple",
+        "description": "Sweet apple",
+        "image": "/images/apple.jpg",
+        "price": 10.00
+    },
+    {
+        "id": "price_1LO7sUAUByxtFMTGhiQBYTX8",
+        "title": "Banana",
+        "description": "Sweet banana",
+        "image": "/images/banana.jpg",
+        "price": 20.00
+    },
+    {
+        "id": "price_1LO7gzAUByxtFMTG1pbasN8B",
+        "title": "Cherry",
+        "description": "Sweet cherry",
+        "image": "/images/cherry.jpg",
+        "price": 30.00
+    }
+]
