@@ -34,6 +34,9 @@ export default function Home() {
                     <p>${price}</p>
                     <p>{description}</p>
                   </a>
+                  <p>
+                    <button className={styles.button}>Buy Now</button>
+                  </p>
                 </li>
               );
             })
