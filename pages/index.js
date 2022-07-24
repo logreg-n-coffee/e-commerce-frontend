@@ -4,33 +4,12 @@ import styles from '../styles/Home.module.css';
 
 import products from '../products.json';
 
-import { initiateCheckout } from '../lib/payment';
-
-import useCart from '../hooks/useCart';
+import { useCart } from '../hooks/useCart';
 
 export default function Home() {
 
-  const { subtotal, quantity, addToCart} = useCart();
+  const { subtotal, quantity, addToCart, checkout } = useCart();
 
-  const checkout = () => {
-    initiateCheckout({
-      // initiateCheckout({
-      //   lineItems: [
-      //     {
-      //       price: id,
-      //       quantity: 1,
-      //     },
-      //   ],
-      // });
-      lineItems: cartItems.map(({ id, quantity }) => {
-        return {
-          price: id,
-          quantity: quantity
-        }
-      })
-
-    });
-  };
 
   return (
     <div className={styles.container}>
