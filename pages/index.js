@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 import products from '../products.json';
 
 import { useCart } from '../hooks/useCart';
 
-export default function Home() {
+const Home = () => {
 
-  const { subtotal, quantity, addToCart, checkout } = useCart();
-
+  const { addToCart } = useCart();
 
   return (
     <div className={styles.container}>
@@ -26,32 +26,22 @@ export default function Home() {
           Here we have the best product available for you
         </p>
 
-        <p className={styles.description}>
-          Items: { quantity }
-          <br />
-          Total Cost: ${ subtotal }
-          <br />
-          <button className={styles.button} onClick={checkout}>Check Out</button>
-        </p>
-
         <ul className={styles.grid}>
           {products.map((product) => {
             const { title, price, description, image, id } = product;
             return (
               <li className={styles.card} key={id}>
-                <a href="#">
-                  <Image src={image} alt={title} width={120} height={120} />
-                  <h3>{title}</h3>
-                  <p>${price}</p>
-                  <p>{description}</p>
-                </a>
+                <Link href={`/products/${id}`}>
+                  <a>
+                    <Image src={image} alt={title} width={120} height={120} />
+                    <h3>{title}</h3>
+                    <p>${price}</p>
+                    <p>{description}</p>
+                  </a>
+                </Link>
+
                 <p>
-                  <button
-                    className={styles.button}
-                    onClick={() => {
-                      addToCart({ id });
-                    }}
-                  >
+                  <button className={styles.button} onClick={() => addToCart({ id })}>
                     Add to Cart
                   </button>
                 </p>
@@ -62,6 +52,9 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}></footer>
+
     </div>
   );
-}
+};
+
+export default Home;
