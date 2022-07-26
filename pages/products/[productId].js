@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../../styles/Product.module.css";
 
-import { useCart } from "../../hooks/useCart";
+import { useCart } from "../../hooks/use-cart";
 
 import products from "../../products.json";
 
@@ -32,7 +32,7 @@ const Product = ({ product }) => {
 
           <p>
             <button className={styles.button} onClick={() => addToCart({ id })}>
-              Buy
+              Add to Cart
             </button>
           </p>
         </div>

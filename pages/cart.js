@@ -4,7 +4,7 @@ import styles from "../styles/Cart.module.css";
 
 import { FaShoppingCart } from "react-icons/fa";
 
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/use-cart";
 import products from "../products.json";
 
 const columns = [
@@ -17,7 +17,7 @@ const columns = [
     Header: "Quantity",
   },
   {
-    columnId: "pricePerItem",
+    columnId: "price",
     Header: "Price Per Item",
   },
   {
@@ -31,16 +31,21 @@ const Home = () => {
   const { cartItems, checkout } = useCart();
 
   const data = cartItems.map(({ id, quantity, pricePerItem }) => {
+
+    // get the product name from the products json 
     const product = products.find(({ id: pid }) => pid === id);
-    const { title } = product || {};
+    const { title } = product || {}; 
+
     return {
       id,
       title,
       quantity,
-      price: price.toFixed(2),
+      price: pricePerItem.toFixed(2),
       total: (quantity * pricePerItem).toFixed(2),
     };
   });
+
+  console.log('data', data);
 
   console.log('useCart', useCart());
 

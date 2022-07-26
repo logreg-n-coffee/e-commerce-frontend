@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 
-import { CartContext, useCartState } from '../hooks/useCart';
+import { CartContext, useCartState } from '../hooks/use-cart';
 
 import Nav from '../components/Nav';
 
