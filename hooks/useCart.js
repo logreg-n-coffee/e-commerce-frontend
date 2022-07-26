@@ -39,6 +39,7 @@ export function useCartState () {
           pricePerItem: product.price,
         };
       });
+  
 
       const subtotal = cartItems.reduce((acc, { pricePerItem, quantity }) => {
         return acc + pricePerItem * quantity;
@@ -88,6 +89,7 @@ export function useCartState () {
 
       return {
         cart,
+        cartItems,
         updateCart,
         subtotal,
         quantity,
