@@ -11,7 +11,7 @@ const Nav = () => {
       <nav className={styles.nav}>
         <p className={styles.navTitle}>E-commerce Store</p>
         <p className={styles.navCart}>
-          <Link href="/cart" onclick={checkout} >
+          <Link href="/cart" onClick={checkout} >
             <a>
               <FaShoppingCart /> ${subtotal.toFixed(2)}
             </a>

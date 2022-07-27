@@ -67,6 +67,18 @@ export function useCartState () {
         });
       };
 
+      const updateItem = ({ id, quantity }) => {
+        updateCart((prev) => {
+          let cart = { ...prev };
+
+          if (cart.products[id]) {
+            cart.products[id].quantity = quantity;
+          }
+
+          return cart;
+        });        
+      };
+
 
       const checkout = () => {
         initiateCheckout({
@@ -91,6 +103,7 @@ export function useCartState () {
         cart,
         cartItems,
         updateCart,
+        updateItem,
         subtotal,
         quantity,
         addToCart, 

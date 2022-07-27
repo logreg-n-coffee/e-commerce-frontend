@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Table from "../components/Table";
 import styles from "../styles/Cart.module.css";
-
 import { FaShoppingCart } from "react-icons/fa";
 
 import { useCart } from "../hooks/use-cart";
@@ -28,7 +27,7 @@ const columns = [
 
 const Home = () => {
 
-  const { cartItems, checkout } = useCart();
+  const { cartItems, checkout, updateItem } = useCart();
 
   const data = cartItems.map(({ id, quantity, pricePerItem }) => {
 
@@ -36,10 +35,41 @@ const Home = () => {
     const product = products.find(({ id: pid }) => pid === id);
     const { title } = product || {}; 
 
+    // add Quantity component so that users can change item quantity value manually
+    const Quantity = () => {
+
+      const handleOnSubmit = e => {
+        
+        e.preventDefault();
+
+        // get the quantity value from the input 
+        const { currentTarget } = e;
+        const inputs = Array.from(currentTarget.elements);
+        const quantity = inputs.find(input => input.name === 'quantity')?.value;
+
+        console.log('inputs', inputs);
+        console.log('quantity', quantity);
+
+        // update the quantity state
+        updateItem({
+          id, 
+          quantity: quantity && parseInt(quantity)
+        });
+
+      };
+
+      return (
+        <form onSubmit={handleOnSubmit}>
+          <input type='number' name='quantity' min={0} defaultValue={quantity} />
+          <button>Update</button>
+        </form>
+      );
+    };
+
     return {
       id,
       title,
-      quantity,
+      quantity: <Quantity />,
       price: pricePerItem.toFixed(2),
       total: (quantity * pricePerItem).toFixed(2),
     };
